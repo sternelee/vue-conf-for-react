@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 		<style>
 			.backgrounds{
-				background: linear-gradient(to bottom, rgba(63, 56, 56, 0.8), rgba(63, 56, 56, 0.4)), url(https://img.w3ctech.com/hangzhou1920.jpg);
+				background: linear-gradient(to bottom, rgba(63, 56, 56, 0.8), rgba(63, 56, 56, 0.4)), url('./imgs/hangzhou1920.jpg');
 				background-size: cover;
 				background-position: center;
 			}
@@ -72,12 +72,129 @@
 							</g>
 						</svg>
 						<h2 style="color: rgb(97, 218, 251);margin-left:-120px;margin-top:40px;">
-							<strong>FOR</strong>
+							<strong>For</strong>
 						</h2>
 						<img src="imgs/react.svg" class="react-logo" alt="logo">
+						<p style="position:absolute;bottom:-200px;right:100px;">by sternelee 2018.11.28</p>
 				</section>
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h2>
+						Vue Conf 2018 杭州回顾
+					</h2>
+					<h3 style="margin-top: 80px;">
+						<a href='https://vue.w3ctech.com/'>vue.w3ctech.com</a>
+					</h3>
+				</section>
+				<section>
+					<section>
+						<h3>尤大神的 Vue 3.0</h3>
+						<ul class="fragment fade-in">
+							<li>更小</li>
+							<li>更快</li>
+							<li>更易于维护</li>
+							<li>更好的多端支持</li>
+							<li>新特性: Hooks, Time Slicing Support</li>
+						</ul>
+						<h4 class="fragment fade-in" style="margin-top:60px;">然而</h4>
+						<h4 class="fragment fade-in">预计明年下半年才推出 Vue 3.0 </h4>
+					</section>
+					<section>
+						<h3>减少运行时的开销</h3>
+						<p>编译时的组件类型判断优化来减少运行时的开销</p>
+					</section>
+					<section>
+						<h2>更易于维护, 完善的工具链</h2>
+						<ul class="fragment fade-in">
+							<li>开发工具：VSCode</li>
+							<li>语义支持：TypeScript</li>
+							<li>代码格式：Prettier</li>
+							<li>编译工具：webpack, Parcel </li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h3>"计算机之子" Winter 的组件自调用？</h3>
+						<h4 style="margin-top: 100px;">举个粟子</h4>
+					</section>
+					<section data-markdown>
+						<textarea data-template style="font-size: 36px;">
+							## vue 单组件内循环
+
+							```javascript
+							<template>
+								<div v-if="initCells <= 0">{{initCells}}</div>
+								<div v-else>{{initCells}}<Cells :initCells="initCells - 1" /></div>
+							</template>
+							
+							<script>
+							export default {
+								name: 'Cells',
+								props: ['initCells']
+							}
+							</script>
+							```
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template style="font-size: 36px">
+							## React 单组件内循环
+
+							```javascript
+							const LoopNumber = (props: Props) => {
+								const { n } = props
+								if ( n <= 0) return null
+								else return (
+									<React.Fragment>
+										<div className={n%2==1 ? 'number on' : 'number'}>{n}</div>
+										<LoopNumber n={n - 1} />
+									</React.Fragment>
+								)
+							}
+							```
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template style="font-size: 36px">
+							## React 列表循环
+
+							```javascript
+							const LoopNumber = (props: Props) => {
+								const { n } = props
+								const listItem = []
+								for (let i = n; i > 0; i--) {
+									listItem.push(<div key={i} className={i%2==1 ? 'number on' : 'number'}>{i}</div>)
+								}
+								return (
+									<React.Fragment>
+										{listItem}
+									</React.Fragment>
+								)
+							}
+							```
+						</textarea>
+					</section>
+					<section>
+						<h3>VS渲染性能对比   结论？</h3>
+					</section>
+				</section>
+				<section>
+					<h3>快手直播@天翔Skyline的SSR渲染</h3>
+					<h3 class="fragment fade-in" style="margin-top: 60px;">关键字： </h3>
+					<div>
+						<h4 style="color: #65ADBE" class="fragment fade-in">SSR (Nuxt)、</h4>
+						<h4 style="color: #65ADBE" class="fragment fade-in">PWA (workbox)、</h4>
+						<h4 style="color: #65ADBE" class="fragment fade-in">Observables (RxJS)、</h4>
+						<h4 style="color: #65ADBE" class="fragment fade-in">GraphQL (Apollo)...</h4>
+					</div>
+				</section>
+				<section>
+					<h2>多端实践 Taro</h2>
+					<h4><img src="./imgs/taro.jpeg" alt=""></h4>
+				</section>
+				<section>
+					<h2>✨感谢✨</h2>
+				</section>
 			</div>
 		</div>
 
